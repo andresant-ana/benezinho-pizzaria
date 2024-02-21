@@ -1,5 +1,6 @@
 package br.com.benefrancis;
 
+import br.com.benefrancis.domain.entity.Opcional;
 import br.com.benefrancis.domain.entity.Pizzaria;
 import br.com.benefrancis.domain.entity.Produto;
 import br.com.benefrancis.domain.entity.Sabor;
@@ -13,7 +14,8 @@ public class Main {
 
     public static void main(String[] args) {
 
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory( "maria-db" );
+        // Em casa utilizar "maria-db" no persistenceUnitName
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory( "fiap" );
         EntityManager manager = factory.createEntityManager();
 
         var manjericao = new Sabor( null, "Manjericao", "Deliciosa pizza de manjericão que fora plantado pelos mais renomados agricultores do Brasil" );
@@ -23,6 +25,13 @@ public class Main {
 
         var pizzaDeManjericao = new Produto( null, "Pizza", BigDecimal.valueOf( 59.99 ), manjericao );
         var pizzaDeFrangoComCatupiri = new Produto( null, "Pizza", BigDecimal.valueOf( 79.99 ), frangoComCatupiri );
+
+
+        var op1 = new Opcional();
+        op1.setNome("Borda linda de cheddar");
+        op1.setPreco(9.99);
+
+        Opcional bordaPaozinhoDeCatupiri = Opcional.builder().preco(19.99).nome("Borda pãozinho de catupiri").build();
 
         manager.getTransaction().begin();
         manager.persist( manjericao );
