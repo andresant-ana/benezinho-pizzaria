@@ -2,6 +2,7 @@ package br.com.benefrancis.domain.entity;
 
 
 import jakarta.persistence.*;
+import jdk.jfr.DataAmount;
 import lombok.*;
 
 @Entity
@@ -12,18 +13,16 @@ import lombok.*;
 @NoArgsConstructor
 public class Opcional {
 
+
     @Id
-    // GeneratedValue define que o atributo 'id' será a chave primária da entidade
-    // GenerationType.SEQUENCE define que o id será gerado em sequência
-    // generator define o nome da sequência
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_OPCIONAL")
-    @SequenceGenerator(name = "SQ_OPCIONAL", sequenceName = "SQ_OPCIONAL")
+    @SequenceGenerator(name ="SQ_OPCIONAL", sequenceName = "SQ_OPCIONAL", initialValue = 1, allocationSize = 1)
+    @Column(name = "ID_OPCIONAL")
     private Long id;
 
+    @Column(name = "NM_OPCIONAL")
     private String nome;
 
     private Double preco;
-
-
 
 }

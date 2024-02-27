@@ -1,7 +1,16 @@
 package br.com.benefrancis.domain.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Entity
 @Table(name = "TB_SABOR")
 public class Sabor {
@@ -9,20 +18,14 @@ public class Sabor {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_SABOR")
     @SequenceGenerator( name = "SQ_SABOR", sequenceName = "SQ_SABOR", initialValue = 1, allocationSize = 1)
+    @Column(name = "ID_SABOR")
     private Long id;
 
+    @Column(name = "NM_SABOR")
     private String nome;
 
+    @Column(name = "DS_SABOR")
     private String descricao;
-
-    public Sabor(){
-    }
-
-    public Sabor(Long id, String nome, String descricao) {
-        this.id = id;
-        this.nome = nome;
-        this.descricao = descricao;
-    }
 
     public Long getId() {
         return id;
