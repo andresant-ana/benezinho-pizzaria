@@ -26,11 +26,17 @@ public class Main {
 
         // persistir(manager);
 
-        Pizzaria pizzaria = manager.find(Pizzaria.class, 1);
+        Pizzaria pizzaria = getPizzaria(manager);
+
         System.out.println(pizzaria);
 
         manager.close();
         factory.close();
+    }
+
+    private static Pizzaria getPizzaria(EntityManager manager) {
+        Pizzaria pizzaria = manager.find(Pizzaria.class, 1);
+        return pizzaria;
     }
 
     private static void persistir(EntityManager manager) {
